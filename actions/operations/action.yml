@@ -1,0 +1,29 @@
+name: "Run Operations Script'"
+description: "Applies weekend gating and executes the appropiate .sh scripts for turning on/off based on project, environment and operation"
+
+inputs:
+  operation:
+    required: true
+    description: "Operation to perform (turn_on / turn_off)"
+  environment:
+    required: true
+    description: "Environment of the project (dev / pre)"
+  project:
+    required: true
+    description: "Name of the project"
+
+outputs:
+  op:
+    description: "Resolved operation: On or Off"
+    value: ${{ steps.run.outputs.op }}
+  ran:
+    description: "Indicates if the operation was executed (weekend gating)"
+    value: ${{ steps.run.outputs.ran }}
+run:
+  using: composite
+  steps:
+    - id: run
+      shell: bash
+      run: |
+        OP_UPPER=$(printf '%s' "${{ inputs.operation }}" | tr '[:lower:]' '[:upper:]')
+        if [
