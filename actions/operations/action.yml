@@ -47,36 +47,36 @@ runs:
           "${SCRIPTS_DIR}/${script}" "${@}"
         }
         KEY="${{ inputs.project }}_${{ inputs.environment }}"
-#        case "$KEY" in
-#          project1|project3|project5)
-#            if [ "$Op" = "On" ]; then
-#              run_script turnOnEC2.sh
-#              run_script turnOnRDS.sh
-#            else
-#              run_script turnOffEC2.sh
-#              run_script turnOffRDS.sh
-#            fi
-#            ;;
-#          project2)
-#            if [ "$Op" = "On" ]; then
-#              run_script turnOnEC2.sh
-#              run_script turnOnRDS.sh
-#            else
-#              run_script turnOffEC2.sh
-#              run_script turnOffRDS.sh
-#            fi
-#            ;;
-#          project4)
-#            if [ "$Op" = "On" ]; then
-#              run_script turnOnEC2.sh
-#              run_script turnOnRDS.sh
-#            else
-#              run_script turnOffEC2.sh
-#              run_script turnOffRDS.sh
-#            fi
-#            ;;
-#          *)
-#            echo "No hay logica de encendido/apagado configurada para $KEY" >&2
-#            exit 1
-#            ;;
-#        esac
+        case "$KEY" in
+          project1|project3|project5)
+            if [ "$Op" = "On" ]; then
+              run_script turnOnEC2.sh
+              run_script turnOnRDS.sh
+            else
+              run_script turnOffEC2.sh
+              run_script turnOffRDS.sh
+            fi
+            ;;
+          project2)
+            if [ "$Op" = "On" ]; then
+              run_script turnOnEC2.sh
+              run_script turnOnRDS.sh
+            else
+              run_script turnOffEC2.sh
+              run_script turnOffRDS.sh
+            fi
+            ;;
+          project4)
+            if [ "$Op" = "On" ]; then
+              run_script turnOnEC2.sh
+              run_script turnOnRDS.sh
+            else
+              run_script turnOffEC2.sh
+              run_script turnOffRDS.sh
+            fi
+            ;;
+          *)
+            echo "No hay logica de encendido/apagado configurada para $KEY" >&2
+            exit 1
+            ;;
+        esac
