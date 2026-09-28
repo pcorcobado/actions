@@ -1,0 +1,1 @@
+echo -e "\t\n---------- INSTANCE EC2 PARADA ----------\n\n"

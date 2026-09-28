@@ -1,0 +1,37 @@
+name: AWSlogin
+description: Action to do login in AWS cli
+
+inputs:
+  aws_access_key_id:
+    description: "AWS Access Key ID"
+    required: true
+  aws_secret_access_key:
+    description: "AWS Secret Access Key"
+    required: true
+  assume_role:
+    description: "Rolte to get"
+    required: true
+  session_name:
+    description: "Session Name"
+    required: true
+  aws_region:
+    description: "AWS region"
+    defaul: eu-west-1
+
+runs:
+  using: "composite"
+
+  step:
+    - name: AWS cli version
+      shell: bash
+      run: aws --version
+    
+    - name: Assume Role
+      shell: bash
+      env:
+        AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key_id }}
+        AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
+        AWS_DEFAULT_REGION: ${{ inputs.aws_region }}
+      run: |
+        echo -e "\t\n---------- LOG:ASSUME_ROLE ----------\n\n"
+

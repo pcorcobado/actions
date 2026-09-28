@@ -1,0 +1,1 @@
+echo -e "\t\n---------- INSTANCE RDS PARADA ----------\n\n"
