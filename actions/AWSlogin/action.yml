@@ -21,7 +21,7 @@ inputs:
 runs:
   using: "composite"
 
-  step:
+  steps:
     - name: AWS cli version
       shell: bash
       run: aws --version
@@ -33,5 +33,8 @@ runs:
         AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
         AWS_DEFAULT_REGION: ${{ inputs.aws_region }}
       run: |
-        echo -e "\t\n---------- LOG:ASSUME_ROLE ----------\n\n"
-
+        echo -e "\t\n---------- LOG:GET ROLE ----------\n\n"
+    - name: Check Assumed role
+      shell: bash
+      run: |
+        echo -e "\t\n---------- LOG:ASSUMED ROLE ----------\n\n"
