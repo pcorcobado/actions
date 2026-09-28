@@ -26,7 +26,7 @@ runs:
       shell: bash
       run: |
         OP_UPPER=$(printf '%s' "${{ inputs.operation }}" | tr '[:lower:]' '[:upper:]')
-        if ["$OP_UPPER" = "TURN_ON" ]; then Op="On"; else Op="Off"; fi
+        if [ "$OP_UPPER" = "TURN_ON" ]; then Op="On"; else Op="Off"; fi
         echo "op=$Op" >> "$GITHUB_OUTPUT"
         echo "---------- OP: $op ----------"
         dayOfWeek=$(date +%u); dayOfMonth=$(date +%d); isWeekend=false
@@ -47,9 +47,9 @@ runs:
           "$SCRIPTS_DIR/$SCRIPT" "$@"
         }
         KEY="${{ inputs.project }}_${{ inputs.environment }}"
-        case "KEY" in
+        case "$KEY" in
           project1|project3|project5)
-            if [ ""$Op" = "On" ]; then
+            if [ "$Op" = "On" ]; then
               run_script turnOnEC2.sh
               run_script turnOnRDS.sh
             else
