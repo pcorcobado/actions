@@ -26,14 +26,14 @@ runs:
       shell: bash
       run: |
         OP_UPPER=$(printf '%s' "${{ inputs.operation }}" | tr '[:lower:]' '[:upper:]')
-        if ["$OP_UPPER" = "TRUN_ON" ]; then Op="On"; else Op="Off"; fi
+        if ["$OP_UPPER" = "TURN_ON" ]; then Op="On"; else Op="Off"; fi
         echo "op=$Op" >> "$GITHUB_OUTPUT"
         echo "---------- OP: $op ----------"
         dayOfWeek=$(date +%u); dayOfMonth=$(date +%d); isWeekend=false
         if [ "$dayOfWeek" -eq 6 ] || [ "$dayOfWeek" -eq 7 ]; then isWeekend=true; fi
         if [ "$Op" = "On" ]; then targetDay=1; else targetDay=4; fi
         ran=true
-        if ["isWeekend" = true ] && [ "$dayOfMonth" = -ne "$targetDay" ]; then ran=false; fi
+        if [ "$isWeekend" = true ] && [ "$dayOfMonth" -ne "$targetDay" ]; then ran=false; fi
         echo "ran=$ran" >> "$GITHUB_OUTPUT"
         if [ "$ran" != "true" ]; then
           echo "Fin de semana fuera de la ventana permitida (dia $dayOfMonth). Se omite la operacion."
