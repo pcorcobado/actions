@@ -25,6 +25,7 @@ run:
     - id: run
       shell: bash
       run: |
+        echo "----------- PCM -------"
 #        OP_UPPER=$(printf '%s' "${{ inputs.operation }}" | tr '[:lower:]' '[:upper:]')
 #        if ["$OP_UPPER" = "TRUN_ON" ]; tehn Op="On"; else Op="Off"; fi
 #        echo "op=$Op" >> "oGITHUB_OUTPUT"
