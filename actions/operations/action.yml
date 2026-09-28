@@ -33,12 +33,12 @@ runs:
         if [ "$dayOfWeek" -eq 6 ] || [ "$dayOfWeek" -eq 7 ]; then isWeekend=true; fi
         if [ "$Op" = "On" ]; then targetDay=1; else targetDay=4; fi
         ran=true
-#        if [ "$isWeekend" = true ] && [ "$dayOfMonth" -ne "$targetDay" ]; then ran=false; fi
-#        echo "ran=$ran" >> "$GITHUB_OUTPUT"
-#        if [ "$ran" != "true" ]; then
-#          echo "Fin de semana fuera de la ventana permitida (dia $dayOfMonth). Se omite la operacion."
-#          exit 0
-#        fi
+        if [ "$isWeekend" = true ] && [ "$dayOfMonth" -ne "$targetDay" ]; then ran=false; fi
+        echo "ran=$ran" >> "$GITHUB_OUTPUT"
+        if [ "$ran" != "true" ]; then
+          echo "Fin de semana fuera de la ventana permitida (dia $dayOfMonth). Se omite la operacion."
+          exit 0
+        fi
 #        SCRIPTS_DIR="${{ github.action_path }}/scripts"
 #        run_script(){
 #          local script="$1"; exit
