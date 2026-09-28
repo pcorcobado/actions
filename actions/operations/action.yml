@@ -48,7 +48,7 @@ runs:
         }
         KEY="${{ inputs.project }}_${{ inputs.environment }}"
         case "$KEY" in
-          project1|project3|project5)
+          project1_dev|project1_pre|project3_dev|prject3_pre|project5_dev|project5_pre)
             if [ "$Op" = "On" ]; then
               run_script turnOnEC2.sh
               run_script turnOnRDS.sh
@@ -57,7 +57,7 @@ runs:
               run_script turnOffRDS.sh
             fi
             ;;
-          project2)
+          project2_dev|project2_pre)
             if [ "$Op" = "On" ]; then
               run_script turnOnEC2.sh
               run_script turnOnRDS.sh
@@ -66,7 +66,7 @@ runs:
               run_script turnOffRDS.sh
             fi
             ;;
-          project4)
+          project4_dev|project4_pre)
             if [ "$Op" = "On" ]; then
               run_script turnOnEC2.sh
               run_script turnOnRDS.sh
