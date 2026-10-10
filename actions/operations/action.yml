@@ -50,29 +50,23 @@ runs:
         case "$KEY" in
           project1_dev|project1_pre|project3_dev|prject3_pre|project5_dev|project5_pre)
             if [ "$Op" = "On" ]; then
-              run_script turnOnEC2.sh
-              run_script turnOnRDS.sh
+              run_script turnOnEC2.sh ${KEY}
             else
-              run_script turnOffEC2.sh
-              run_script turnOffRDS.sh
+              run_script turnOffEC2.sh ${KEY}
             fi
             ;;
           project2_dev|project2_pre)
             if [ "$Op" = "On" ]; then
-              run_script turnOnEC2.sh
-              run_script turnOnRDS.sh
+              run_script turnOnEC2.sh ${KEY}
             else
-              run_script turnOffEC2.sh
-              run_script turnOffRDS.sh
+              run_script turnOffEC2.sh ${KEY}
             fi
             ;;
           project4_dev|project4_pre)
             if [ "$Op" = "On" ]; then
-              run_script turnOnEC2.sh
-              run_script turnOnRDS.sh
+              run_script turnOnEC2.sh ${KEY}
             else
-              run_script turnOffEC2.sh
-              run_script turnOffRDS.sh
+              run_script turnOffEC2.sh ${KEY}
             fi
             ;;
           *)

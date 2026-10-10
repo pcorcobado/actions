@@ -1,1 +1,0 @@
-echo -e "\t\n---------- INSTANCE RDS ARRANCADA ----------\n\n"
