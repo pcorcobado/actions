@@ -28,7 +28,6 @@ runs:
         OP_UPPER=$(printf '%s' "${{ inputs.operation }}" | tr '[:lower:]' '[:upper:]')
         if [ "$OP_UPPER" = "TURN_ON" ]; then Op="On"; else Op="Off"; fi
         echo "op=$Op" >> "$GITHUB_OUTPUT"
-        echo "---------- OP: $Op ----------"
         dayOfWeek=$(date +%u); dayOfMonth=$(date +%d); isWeekend=false
         if [ "$dayOfWeek" -eq 6 ] || [ "$dayOfWeek" -eq 7 ]; then isWeekend=true; fi
         if [ "$Op" = "On" ]; then targetDay=1; else targetDay=4; fi
@@ -42,7 +41,6 @@ runs:
         SCRIPTS_DIR="${{ github.action_path }}/scripts"
         run_script(){
           local script="$1"; shift
-          echo -e "---------- ${{ inputs.project }} ${{ inputs.environment }} ${script} ${@} ----------"
           chmod +x "${SCRIPTS_DIR}/${script}"
           "${SCRIPTS_DIR}/${script}" "${@}"
         }

@@ -1,4 +1,4 @@
-echo -e "\n\n\t#################### Show target EC2 before action ####################\n\n"
+echo -e "\n\n\t#################### Show target EC2 before action ####################"
 INSTANCE_ID=$(aws ec2 describe-instances \
   --filters \
     "Name=tag:Project,Values=${1}" \
@@ -11,11 +11,11 @@ aws ec2 describe-instances \
     --query 'Reservations[].Instances[].{Id:InstanceId,State:State.Name,Subnet:SubnetId,PrivateIP:PrivateIpAddress}' \
     --output table
 
-echo -e "\n\n\t#################### Stop EC2 ####################\n\n"
+echo -e "\n\n\t#################### Stop EC2 ####################"
 aws ec2 stop-instances \
     --instance-ids "${INSTANCE_ID}"
 
-echo -e "\n\n\t#################### Verify final EC2 state ####################\n\n"
+echo -e "\n\n\t#################### Verify final EC2 state ####################"
 aws ec2 describe-instances \
     --instance-ids "${INSTANCE_ID}" \
     --query 'Reservations[].Instances[].{Id:InstanceId,State:State.Name}' \
