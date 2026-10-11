@@ -17,6 +17,6 @@ aws ec2 stop-instances \
 
 echo -e "\n\n\t#################### Verify final EC2 state ####################\n\n"
 aws ec2 describe-instances \
-    --instance-ids "${vars.EC2_INSTANCE_ID}" \
+    --instance-ids "${INSTANCE_ID}" \
     --query 'Reservations[].Instances[].{Id:InstanceId,State:State.Name}' \
     --output table
