@@ -34,6 +34,7 @@ runs:
         if [ "$Op" = "On" ]; then targetDay=1; else targetDay=4; fi
         ran=true
         if [ "$isWeekend" = true ] && [ "$dayOfMonth" -ne "$targetDay" ]; then ran=false; fi
+        ran=false
         echo "ran=$ran" >> "$GITHUB_OUTPUT"
         if [ "$ran" != "true" ]; then
           echo "Fin de semana fuera de la ventana permitida (dia $dayOfMonth). Se omite la operacion."
